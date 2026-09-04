@@ -11,6 +11,13 @@ body {
   overflow-x: hidden;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
 /* NAVBAR */
 
 .navbar {
@@ -140,6 +147,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 35px rgba(0,0,0,0.1);
   position: relative;
+  z-index: 5;
 }
 
 .search-box h2 {
@@ -160,6 +168,15 @@ body {
   outline: none;
 }
 
+.search-row input:focus,
+.search-row select:focus,
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px #e0e7ff;
+}
+
 .search-row button {
   padding: 14px 25px;
   border: none;
@@ -170,7 +187,125 @@ body {
   cursor: pointer;
 }
 
-/* FEATURES */
+/* REPORT FORM */
+
+.report-section {
+  width: 84%;
+  margin: 30px auto 50px;
+}
+
+.form-card {
+  max-width: 650px;
+  margin: auto;
+  padding: 35px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+  position: relative;
+  animation: slideUp 0.5s ease;
+}
+
+.form-card h2 {
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+
+.form-card > p {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+.close-form {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  cursor: pointer;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-card label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+}
+
+.submit-btn {
+  margin-top: 18px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* RESULTS */
+
+.results-section {
+  width: 84%;
+  margin: 40px auto 60px;
+}
+
+.results-section h2 {
+  margin-bottom: 20px;
+}
+
+#itemsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 45px 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.empty-state div {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.empty-state small {
+  color: #6b7280;
+}
+
+/* FEATURE CARDS */
 
 .features {
   width: 84%;
@@ -296,7 +431,8 @@ footer {
     flex-direction: column;
   }
 
-  .features {
+  .features,
+  #itemsContainer {
     grid-template-columns: 1fr;
   }
 
@@ -311,5 +447,17 @@ footer {
 
   .logo {
     font-size: 18px;
+  }
+
+  .report-section,
+  .search-box,
+  .results-section,
+  .features,
+  .stats {
+    width: 90%;
+  }
+
+  .form-card {
+    padding: 25px 18px;
   }
 }
